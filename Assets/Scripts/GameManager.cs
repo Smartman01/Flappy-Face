@@ -9,18 +9,7 @@ public class GameManager : MonoBehaviour
 
     public Text scoreTxt;
 
-    public spawnScript[] spawnScripts;
-
-    private void Awake()
-    {
-        spawnScripts = FindObjectsOfType(typeof(spawnScript)) as spawnScript[];
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public spawnScript spawnSc;
 
     // Update is called once per frame
     void Update()
@@ -30,7 +19,18 @@ public class GameManager : MonoBehaviour
 
     public void SpawnLevel()
     {
-        foreach (spawnScript s in spawnScripts)
-            s.Spawn();
+        spawnSc.Spawn();
+    }
+
+    public void StartGame()
+    {
+        // Close Start Menu
+    }
+
+    public void GameOver()
+    {
+        // Save score
+
+        // Open Death Menu
     }
 }

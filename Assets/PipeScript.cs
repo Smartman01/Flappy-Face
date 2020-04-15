@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PipesMovement : MonoBehaviour
+public class PipeScript : MonoBehaviour
 {
     public float minY;
     public float maxY;
     public float randY;
-    public float boundry;
-    public float speed;
 
     public Transform pos;
 
@@ -25,21 +23,14 @@ public class PipesMovement : MonoBehaviour
     {
         randY = Random.Range(minY, maxY);
 
-        pos.position.Set(pos.position.x, randY, pos.position.z);
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        pos.position = new Vector2(pos.position.x - Time.deltaTime * speed, randY);
-
-        if (pos.position.x <= boundry)
-            Destroy(this.gameObject);
+        pos.position = new Vector2(pos.position.x, randY);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         gm.score++;
+
+        // Play Sound
 
         gm.SpawnLevel();
     }
